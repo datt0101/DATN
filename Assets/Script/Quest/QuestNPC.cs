@@ -31,6 +31,7 @@ public class QuestNPC : MonoBehaviour
     public void TakeQuest()
     {
         QuestManager.instance.AcceptQuest(NpcQuestList[0].QuestID);
+        Debug.Log("123");
     }
 }
 
