@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe44cebfb2802544e9512a7a0c3215b3, type: 3}
-  m_Name: Hello Hust
+  m_Script: {fileID: 11500000, guid: 68ff9c19e39caca49833d5b2b3beb5f4, type: 3}
+  m_Name: PlayerProfile
   m_EditorClassIdentifier: 
-  questLevel: 1
-  questTitle: Hello Hust
-  questDescription: Find the C7 Building in Campus
-  questID: 1
-  questSummary: Find the place
-  questPoint: 10
-  questProgress: 3
+  playerID: 20192754
+  playerLevel: 1
+  playerName: Guest

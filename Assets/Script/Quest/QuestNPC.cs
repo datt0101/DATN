@@ -9,7 +9,6 @@ public class QuestNPC : MonoBehaviour
     private bool isCollision = false;
     private void Update()
     {
-        Debug.Log(isCollision);
         TakeQuest();
     }
     private void OnCollisionEnter(Collision collision)
@@ -30,8 +29,10 @@ public class QuestNPC : MonoBehaviour
     }
     public void TakeQuest()
     {
-        QuestManager.instance.AcceptQuest(NpcQuestList[0].QuestID);
-        Debug.Log("123");
+        if (isCollision)
+        {
+            QuestManager.instance.AcceptQuest(NpcQuestList[0].QuestID);
+        }
     }
 }
 

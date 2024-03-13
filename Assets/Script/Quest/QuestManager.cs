@@ -77,7 +77,7 @@ public class QuestManager : MonoBehaviour
         {
             if (currentQuestList[i].QuestID == questID && currentQuestList[i].QuestProgress == QuestProgress.Accepted)
             {
-                Debug.Log("CompleteQuest");
+                Debug.Log("CompleteQuest: " + i);
                 currentQuestList[i].QuestProgress = QuestProgress.Complete;
                 currentQuestList.Remove(currentQuestList[i]);
             }

@@ -6,19 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotateSpeed = 5f;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float rotateSpeed = 50f;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private float jumpHeight = 0.5f;
 
-    private CharacterController controller;
+    //private CharacterController controller;
     private Vector3 moveDirection;
     private Vector3 move;
     private bool isGrounded;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Moving()
     {
-        isGrounded = controller.isGrounded;
+        isGrounded = PlayerManager.instance.playerController.isGrounded;
 
         if (isGrounded && moveDirection.y < 0)
         {
@@ -38,17 +38,17 @@ public class PlayerMovement : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        move = transform.right * horizontalInput + transform.forward * verticalInput;
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        move = PlayerManager.instance.playerController.transform.right * horizontalInput + PlayerManager.instance.playerController.transform.forward * verticalInput;
+        PlayerManager.instance.playerController.Move(move * moveSpeed * Time.deltaTime);
         moveDirection.y += gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        PlayerManager.instance.playerController.Move(moveDirection * Time.deltaTime);
     }
     public void Turning()
     {
         if (move != Vector3.zero)
         {
             Quaternion newRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+            PlayerManager.instance.playerController.transform.rotation = Quaternion.RotateTowards(PlayerManager.instance.playerController.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
         }
     }
     public void Jumping()
